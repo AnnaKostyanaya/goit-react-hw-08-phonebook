@@ -1,0 +1,26 @@
+.text {
+    font-size: 34px;
+    text-align: center;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon:hover,
+.icon:focus {
+    animation: roll 3s infinite;
+    transform: rotate(30deg);
+    opacity: .7;
+}
+
+@keyframes roll {
+    0% {
+    transform: rotate(0);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
