@@ -16,15 +16,28 @@ try {
 
 export const addContacts = createAsyncThunk(
     "contacts/addContacts",
-    async ({id, name, number }, thunkAPI) => {
+    async ({ name, number }, thunkAPI) => {
     try {
-        const response = await instance.post("/contacts", { id, name, number });
+        const response = await instance.post("/contacts", { name, number });
         return response.data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
     }
     }
     );
+
+// c id
+// export const addContacts = createAsyncThunk(
+//     "contacts/addContacts",
+//     async ({id, name, number }, thunkAPI) => {
+//     try {
+//         const response = await instance.post("/contacts", { id, name, number });
+//         return response.data;
+//     } catch (e) {
+//         return thunkAPI.rejectWithValue(e.message);
+//     }
+//     }
+//     );
 
     export const deleteContacts = createAsyncThunk(
     "contacts/deleteContacts",
@@ -37,3 +50,16 @@ export const addContacts = createAsyncThunk(
     }
     }
     );
+
+    export const changeContactDetail = createAsyncThunk(
+    "contacts/changeContact",
+    async ({id, name, number }, thunkAPI) => {
+    try {
+        const response = await instance.patch(`/contacts/${id}`, { name, number });
+        return response.data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    }
+    }
+    );
+

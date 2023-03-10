@@ -1,41 +1,70 @@
-// import Modal from "./../components/Modal/Modal";
 import { useParams, Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react"; 
-import { useSelector, useDispatch } from "react-redux";
-// import { selectCurrentUser } from "../redux/selectors";
-// import { fetchUserById } from "../redux/operations";
+import { useState } from "react"; 
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getAllContacts, getCurrentUser } from "../../redux/contacts/contacts-selectors";
+import Modal from "shared/components/Modal/Modal";
+import ModalQuestion from "shared/components/Modal/ModalQuestion";
+import ModalEditForm from "shared/components/Modal/ModalEditForm";
 
 const ContactDetailPage = () => {
 
-// const [isModalOpen, setIsModalOpen] = useState(false);
-// const location = useLocation();
-// const user = useSelector(selectCurrentUser);
-// const dispatch = useDispatch();
-// const { id } = useParams();
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [menu, setMenu] = useState("");
+const [changeName, setchangeName] = useState(null);
 
-// useEffect(() => {
-//     dispatch(fetchUserById(id));
-// }, [dispatch, id])
+const location = useLocation();
+const { id } = useParams();
+const contacts = useSelector(getAllContacts);
+const contactDetail = contacts.filter(contact => contact.id === id);
 
-// const buttonClickHandler =() => {
-//     setIsModalOpen(!isModalOpen);
-// }
-// return (
-//     <>
-//     {user && (
-//         <>
-//             <Link to={location.state.from}>Go back</Link>
-//             <img src={user.avatar} alt={user.name} />
-//             <h3>{user.name}</h3>
-//             <p>{user.adress}</p>
-//             <p>{user.phone}</p>
-//             <p>{user.email}</p>
-//             <button type="button" onClick={buttonClickHandler}>Delete user</button>
-//             {isModalOpen && <Modal toggleModal={buttonClickHandler} />}
-//         </>
-//     )}
-//     </>
-// );
+const currentUser = useSelector(getCurrentUser);
+
+useEffect(() => {
+    setchangeName(currentUser); 
+}, [currentUser]);
+
+const buttonDeleteClickHandler =() => {
+    setIsModalOpen(!isModalOpen);
+    setMenu("delete");
+}
+
+const buttonEditClickHandler =() => {
+    setIsModalOpen(!isModalOpen);
+    setMenu("edit");
+}
+
+
+return (
+    <>
+    {contactDetail && (
+        <>
+            <Link to={location.state.from}>Go back</Link>
+            {(changeName === null) ? ( 
+                <div>
+                    <p>{contactDetail[0].name}</p>
+                    <p>{contactDetail[0].number}</p>
+                </div>
+            ) : (
+                <div>
+                    <p>{currentUser.name}</p>
+                    <p>{currentUser.number}</p>
+                </div>
+            )}
+            <button type="button" onClick={buttonDeleteClickHandler}>Delete user</button>
+            {(isModalOpen && menu === "delete") && 
+            <Modal toggleModal={buttonDeleteClickHandler} >
+                <ModalQuestion toggleModal={buttonDeleteClickHandler} />
+            </Modal>}
+            <button type="button" onClick={buttonEditClickHandler}>Edit user</button>
+            {(isModalOpen && menu === "edit") && 
+            <Modal toggleModal={buttonEditClickHandler}>
+                <ModalEditForm toggleModal={buttonEditClickHandler}/>
+            </Modal>}
+        </>
+    )}
+    </>
+);
 };
 
 export default ContactDetailPage;

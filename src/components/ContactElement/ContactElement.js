@@ -5,9 +5,8 @@ import { FcPhone } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom"; 
 
-const ContactElement = ({ state, onDeleteContact, contact: { id, name, number } }) => (
+const ContactElement = ({ state, contact: { id, name, number } }) => (
     <li className={style.contact__item}> 
-        <Link to={id} state={state}>
             <IconContext.Provider value={{ size: "3em" }}>
                 <div>
                     <FcPhone className={style.swing} />
@@ -15,21 +14,15 @@ const ContactElement = ({ state, onDeleteContact, contact: { id, name, number } 
             </IconContext.Provider>
             <p className={style.contact__text}>{name}</p>
             <p className={style.contact__tel}>{number}</p>
-            <button
-                type="button"
-                className={style.contact__btn}
-                onClick={() => onDeleteContact(id)}
-            >
-                Delete
-            </button>
-        </Link>
+            <Link to={id} state={state} className={style.contact__btn}>
+                Change contact
+            </Link>
     </li>
 );
 
 export default ContactElement;
 
 ContactElement.propTypes = {
-    onDeleteContact: PropTypes.func.isRequired,
     contact: PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
