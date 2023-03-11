@@ -6,7 +6,7 @@ import { getError, getIsLoading } from "redux/contacts/contacts-selectors";
 import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
 import Filter from '../Filter';
-import style from '../App/App.module.css';
+import style from '../ContactBook/ContactBook.module.css';
 
 const ContactBook = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const ContactBook = () => {
 
 return (
   <div className={style.container}>
-    <h1 className={style.main_title}>Phonebook</h1>
+    <h2 className={style.main_title}>Add contact:</h2>
     <ContactForm />
     <h2 className={style.title}>Contacts</h2>
     <Filter />

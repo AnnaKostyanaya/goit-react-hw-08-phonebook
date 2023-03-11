@@ -7,6 +7,7 @@ import fields from "./fields";
 import initialState from "./initialState";
 
 import styles from "./RegisterForm.module.css";
+import PropTypes from 'prop-types';
 
 const RegisterForm = ({onSubmit}) => {
     const {state, handleChange, handleSubmit} = useForm({initialState, onSubmit});
@@ -23,3 +24,7 @@ const RegisterForm = ({onSubmit}) => {
 }
 
 export default RegisterForm;
+
+RegisterForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+};

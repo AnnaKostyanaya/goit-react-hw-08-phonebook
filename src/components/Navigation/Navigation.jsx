@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { FcBusinessContact} from 'react-icons/fc';
+import { FcContacts } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 
 import NavAuth from "../NavAuth/NavAuth";
@@ -17,7 +17,7 @@ return (
         <li className={style.listItem}>
             <IconContext.Provider value={{ size: "2em" }}>
             <NavLink to="/contacts">
-                    <FcBusinessContact />
+                    <FcContacts />
             </NavLink>
             </IconContext.Provider>
         </li>

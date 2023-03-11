@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-
+import style from "./Modal.module.css";
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -26,8 +27,8 @@ if (event.currentTarget === event.target) {
 
 
 return createPortal(
-    <div className="Modal__backdrop" onClick={handleBackdropClick}>
-    <div className="Modal__content">
+    <div className={style.modal__backdrop} onClick={handleBackdropClick}>
+    <div className={style.modal__content}>
         {children}
     </div>
     </div>,
@@ -36,3 +37,8 @@ return createPortal(
 }
 
 export default Modal;
+
+Modal.propTypes = {
+    toggleModal: PropTypes.func.isRequired,
+    children: PropTypes.object.isRequired,
+};

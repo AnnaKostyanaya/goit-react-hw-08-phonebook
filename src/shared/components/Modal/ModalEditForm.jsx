@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changeContactDetail } from "redux/contacts/contacts-operations";
 import { getAllContacts } from "redux/contacts/contacts-selectors";
+import PropTypes from 'prop-types';
+import style from "./ModalEditForm.module.css";
 
 const ModalEditForm = ({ toggleModal }) => {
 
@@ -69,8 +71,8 @@ const onCheckName = (name) => {
 return (
     <>
     <form onSubmit={handleSubmit} >
-        <label >Name
-            <input 
+        <label className={style.wrapper}>Name
+            <input className={style.field}
                 type="text"
                 name="name"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -80,8 +82,8 @@ return (
                 value={name} 
             />
         </label>
-        <label >Number
-            <input 
+        <label className={style.wrapper}>Number
+            <input className={style.field}
                 type="tel"
                 name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -91,11 +93,15 @@ return (
                 value={number}
             />
         </label>
-    <button variant="contained" type="submit">Save changes</button>
+    <button className={style.btn} type="submit">Save changes</button>
     </form>
-    <button variant="contained" type="button" onClick={() => toggleModal()}>Cancel</button>
+    <button className={style.cancel_btn} type="button" onClick={() => toggleModal()}>Cancel</button>
     </>
 );
 }
 
 export default ModalEditForm;
+
+ModalEditForm.propTypes = {
+    toggleModal: PropTypes.func.isRequired,
+};

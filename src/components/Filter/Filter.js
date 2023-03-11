@@ -16,9 +16,9 @@ const changeFilter = event => {
 };
 
 return (
-    <label className={style.lable}>
+    <label className={style.wrapper}>
         Find contacts by name
-        <input className={style.input} type="text" value={filter} onChange={changeFilter} />
+        <input className={style.field} type="text" value={filter} onChange={changeFilter} />
     </label>
 )
 }

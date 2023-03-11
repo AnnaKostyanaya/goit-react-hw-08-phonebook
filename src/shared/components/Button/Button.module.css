@@ -4,9 +4,9 @@
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
-/*     
-    &:hover {
-        background-color: #000;
-        color: #fff;
-    } */
+}
+    
+.btn:hover {
+    background-color: rgba(224, 62, 13, 0.612);
+    color: #fff;
 }

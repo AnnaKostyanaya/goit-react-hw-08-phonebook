@@ -4,7 +4,7 @@ import { getUser } from "../../redux/auth/auth-selectors";
 
 import { logout } from "../../redux/auth/auth-operations";
 
-import Button from '@mui/material/Button';
+import style from '../NavUser/NavUser.module.css';
 
 
 const NavUser = () => {
@@ -18,8 +18,8 @@ const NavUser = () => {
 
     return (
         <div>
-            <p>{email}</p> 
-            <Button variant="contained" onClick={onLogout}>Logout</Button>
+            <p className={style.name}>{email}</p> 
+            <button className={style.btn} onClick={onLogout}>Logout</button>
         </div>
     )
 }

@@ -68,8 +68,8 @@ const onCheckName = (name) => {
 
 return (
     <form onSubmit={handleSubmit} >
-        <label className={style.lable} >Name
-            <input className={style.input}
+        <label className={style.wrapper} >Name
+            <input className={style.field}
                 type="text"
                 name="name"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -79,8 +79,8 @@ return (
                 value={name}
             />
         </label>
-        <label className={style.lable} >Number
-            <input className={style.input}
+        <label className={style.wrapper} >Number
+            <input className={style.field}
                 type="tel"
                 name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -90,7 +90,7 @@ return (
                 value={number}
             />
         </label>
-    <button variant="contained" className={style.btn} type="submit">Add contact</button>
+    <button className={style.btn} type="submit">Add contact</button>
     </form>
 );
 }

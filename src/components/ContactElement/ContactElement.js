@@ -14,8 +14,8 @@ const ContactElement = ({ state, contact: { id, name, number } }) => (
             </IconContext.Provider>
             <p className={style.contact__text}>{name}</p>
             <p className={style.contact__tel}>{number}</p>
-            <Link to={id} state={state} className={style.contact__btn}>
-                Change contact
+            <Link to={id} state={state} className={style.contact_btn}>
+                Change
             </Link>
     </li>
 );

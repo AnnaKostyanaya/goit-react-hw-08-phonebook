@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteContacts } from "redux/contacts/contacts-operations";
+import PropTypes from 'prop-types';
+import style from "./ModalQuestion.module.css";
 
 const ModalQuestion = ( { toggleModal } ) => {
 
@@ -16,16 +18,20 @@ const ModalQuestion = ( { toggleModal } ) => {
 
 return (
     <>
-        <p>Are you sure?</p>
-        <ul>
+        <p className={style.text} >Are you sure?</p>
+        <ul className={style.list} >
             <li>
-                <button type="button" onClick={() => confirmButtonHandler()}>Confirm</button>
+                <button className={style.btn} type="button" onClick={() => confirmButtonHandler()}>Confirm</button>
             </li>
             <li>
-                <button type="button" onClick={() => toggleModal()}>Cancel</button>
+                <button className={style.btn} type="button" onClick={() => toggleModal()}>Cancel</button>
             </li>
         </ul>
     </>
 )};
 
 export default ModalQuestion;
+
+ModalQuestion.propTypes = {
+    toggleModal: PropTypes.func.isRequired,
+};

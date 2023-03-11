@@ -1,16 +1,17 @@
 .title {
-    color: rgb(10, 10, 10);
+    color: rgba(224, 62, 13, 0.612);
     margin-top: 20px;
 }
 
 .main_title {
-    color: rgb(10, 10, 10);
+    color: rgba(224, 62, 13, 0.612);
 }
+
 .container {
     padding: 20px;
     margin: 10px;
-    width: 400px;
-    outline: 2px solid  rgb(10, 10, 10);;
+    width: 550px;
+    outline: 2px solid rgb(61, 58, 58);
     margin-right: auto;
     margin-left: auto;
 }

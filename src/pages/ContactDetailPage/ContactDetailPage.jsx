@@ -6,6 +6,7 @@ import { getAllContacts, getCurrentUser } from "../../redux/contacts/contacts-se
 import Modal from "shared/components/Modal/Modal";
 import ModalQuestion from "shared/components/Modal/ModalQuestion";
 import ModalEditForm from "shared/components/Modal/ModalEditForm";
+import style from '../ContactDetailPage/ContactDetailPage.module.css';
 
 const ContactDetailPage = () => {
 
@@ -36,34 +37,34 @@ const buttonEditClickHandler =() => {
 
 
 return (
-    <>
+    <div className={style.container}>
     {contactDetail && (
         <>
-            <Link to={location.state.from}>Go back</Link>
+            <Link to={location.state.from} className={style.contact_btn}>Go back</Link>
             {(changeName === null) ? ( 
                 <div>
-                    <p>{contactDetail[0].name}</p>
-                    <p>{contactDetail[0].number}</p>
+                    <p className={style.userAbout}><span className={style.header}>name: </span>{contactDetail[0].name}</p>
+                    <p className={style.userAbout}><span className={style.header}>number: </span>{contactDetail[0].number}</p>
                 </div>
             ) : (
                 <div>
-                    <p>{currentUser.name}</p>
-                    <p>{currentUser.number}</p>
+                    <p className={style.userAbout}><span className={style.header}>name: </span>{currentUser.name}</p>
+                    <p className={style.userAbout}><span className={style.header}>number: </span>{currentUser.number}</p>
                 </div>
             )}
-            <button type="button" onClick={buttonDeleteClickHandler}>Delete user</button>
+            <button type="button" onClick={buttonDeleteClickHandler} className={style.btn} >Delete user</button>
             {(isModalOpen && menu === "delete") && 
             <Modal toggleModal={buttonDeleteClickHandler} >
                 <ModalQuestion toggleModal={buttonDeleteClickHandler} />
             </Modal>}
-            <button type="button" onClick={buttonEditClickHandler}>Edit user</button>
+            <button type="button" onClick={buttonEditClickHandler} className={style.btn} >Edit user</button>
             {(isModalOpen && menu === "edit") && 
             <Modal toggleModal={buttonEditClickHandler}>
                 <ModalEditForm toggleModal={buttonEditClickHandler}/>
             </Modal>}
         </>
     )}
-    </>
+    </div>
 );
 };
 

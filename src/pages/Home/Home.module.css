@@ -1,9 +1,36 @@
+.chapter {
+    margin-top: 64px;
+}
+
 .text {
-    font-size: 34px;
+    font-size: 24px;
     text-align: center;
 }
 
+.chapter .text {
+    color: #eaeaf9;
+    font-family: inherit;
+    overflow: hidden;
+    border-right: .17em solid rgba(224, 62, 13, 0.612);  
+    white-space: nowrap;  
+    margin: 0 auto;  
+    letter-spacing: .17em;
+    animation:  
+    typing 3.5s steps(30, end),
+    blink-caret .7s step-end infinite;
+}
+
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: rgba(224, 62, 13, 0.612) }
+}
 .icon {
+    margin-top: 64px;
     display: flex;
     justify-content: center;
     align-items: center;

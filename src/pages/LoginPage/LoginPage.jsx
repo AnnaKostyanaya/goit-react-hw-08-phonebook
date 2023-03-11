@@ -5,7 +5,7 @@ import {login} from "../../redux/auth/auth-operations";
 import {isUserLogin} from "../../redux/auth/auth-selectors";
 
 import LoginForm from "../../components/LoginForm/LoginForm";
-
+import style from "../LoginPage/LoginPage.module.css";
 const LoginPage = () => {
     const isLogin = useSelector(isUserLogin);
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const LoginPage = () => {
 
     return (
         <div>
-            <h1>Login page</h1>
+            <h1 className={style.header}>Login page</h1>
             <LoginForm onSubmit={handleLogin} />
         </div>
     )

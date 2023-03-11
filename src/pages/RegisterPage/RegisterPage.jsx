@@ -6,6 +6,8 @@ import {isUserLogin} from "../../redux/auth/auth-selectors";
 
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
+import style from "../RegisterPage/RegisterPage.module.css";
+
 const RegisterPage = () => {
     const isLogin = useSelector(isUserLogin);
     const dispatch = useDispatch();
@@ -20,7 +22,7 @@ const RegisterPage = () => {
 
     return (
         <div>
-            <h1>Register page</h1>
+            <h1 className={style.header}>Register page</h1>
             <RegisterForm onSubmit={handleSignup} />
         </div>
     )

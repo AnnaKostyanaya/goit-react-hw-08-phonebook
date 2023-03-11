@@ -7,7 +7,7 @@ const Home = () => {
 
     
     return (
-    <div>
+    <div className={style.chapter}>
         <p className={style.text}>Create your own contact book!</p>
         <IconContext.Provider value={{ size: "10em" }}>
             <div className={style.icon}>

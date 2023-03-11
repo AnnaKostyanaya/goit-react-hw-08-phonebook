@@ -7,8 +7,9 @@ import fields from "./fields";
 import initialState from "./initialState";
 
 import styles from "./LoginForm.module.css";
+import PropTypes from 'prop-types';
 
-const RegisterForm = ({onSubmit}) => {
+const LoginForm = ({onSubmit}) => {
     const {state, handleChange, handleSubmit} = useForm({initialState, onSubmit});
     const { email, password} = state;
 
@@ -21,4 +22,8 @@ const RegisterForm = ({onSubmit}) => {
     )
 }
 
-export default RegisterForm;
+export default LoginForm;
+
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+};
