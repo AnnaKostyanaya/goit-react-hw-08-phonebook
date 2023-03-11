@@ -9,13 +9,14 @@ import { authReducer } from "./auth/auth-slice";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['token']
+    whitelist: ['token', "contacts"]
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedContactReducer = persistReducer(persistConfig, contactsReducer);
 
 const rootReducer = combineReducers({
-    contacts: contactsReducer,
+    contacts: persistedContactReducer,
     filter: filterReducer,
     auth: persistedAuthReducer,
 })
