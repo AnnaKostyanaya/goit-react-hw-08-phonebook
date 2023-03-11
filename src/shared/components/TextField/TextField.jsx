@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { nanoid } from "nanoid";
+import PropTypes from 'prop-types';
 
 import styles from "./TextField.module.css";
 
@@ -15,3 +16,8 @@ const TextField = ({label, handleChange, ...props}) => {
 }
 
 export default TextField;
+
+TextField.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired,
+};
