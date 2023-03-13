@@ -11,3 +11,11 @@ export const getError = ({auth}) => {
     return auth.error;
     }
 };
+
+export const getDetailError = ({auth}) => {
+    if (auth.error === null) {
+        return
+    } else {
+    return auth.error;
+    }
+};

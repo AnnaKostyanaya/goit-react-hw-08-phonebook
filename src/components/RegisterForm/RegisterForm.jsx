@@ -10,13 +10,13 @@ import styles from "./RegisterForm.module.css";
 import PropTypes from 'prop-types';
 
 import { useSelector } from "react-redux";
-import { getError } from "../../redux/auth/auth-selectors";
+import { getDetailError } from "../../redux/auth/auth-selectors";
 
 const RegisterForm = ({onSubmit}) => {
-
     const {state, handleChange, handleSubmit} = useForm({initialState, onSubmit});
     const {name, email, password} = state;
-    const error = useSelector(getError);
+
+    const detailError = useSelector(getDetailError);
 
     return (
         <>
@@ -26,7 +26,7 @@ const RegisterForm = ({onSubmit}) => {
                 <TextField value={password} handleChange={handleChange} {...fields.password} />
                 <Button>Register</Button>
             </form>
-            {(error) && <p>A user with such data exists. Try again.</p>}
+            {(detailError === "/users/signup") && <p className={styles.text}>A user with such data exists. Try again.</p>}
         </>
     )
 }

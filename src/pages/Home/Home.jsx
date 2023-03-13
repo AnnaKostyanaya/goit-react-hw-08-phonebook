@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { FcContacts } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 
@@ -11,7 +12,9 @@ const Home = () => {
         <p className={style.text}>Create your own contact book!</p>
         <IconContext.Provider value={{ size: "10em" }}>
             <div className={style.icon}>
-                <FcContacts />
+                <NavLink to="/contacts">
+                    <FcContacts />
+                </NavLink>
             </div>
         </IconContext.Provider>
     </div>

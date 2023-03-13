@@ -10,12 +10,13 @@ import styles from "./LoginForm.module.css";
 import PropTypes from 'prop-types';
 
 import { useSelector } from "react-redux";
-import { getError } from "../../redux/auth/auth-selectors";
+import { getDetailError } from "../../redux/auth/auth-selectors";
 
 const LoginForm = ({onSubmit}) => {
+    
+    const detailError = useSelector(getDetailError);
     const {state, handleChange, handleSubmit} = useForm({initialState, onSubmit});
     const { email, password} = state;
-    const error = useSelector(getError);
 
     return (
     <>
@@ -24,7 +25,7 @@ const LoginForm = ({onSubmit}) => {
             <TextField value={password} handleChange={handleChange} {...fields.password} />
             <Button variant="contained">Register</Button>
         </form>
-        {(error) && <p>Login or password error. Try again.</p>}
+        {(detailError === "/users/login") && <p className={styles.text}>Login or password error. Try again.</p>}
     </>
     )
 }

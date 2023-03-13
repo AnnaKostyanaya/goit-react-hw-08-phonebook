@@ -1,11 +1,13 @@
 import React from 'react';
 import style from '../ContactElement/ContactElement.module.css';
 import PropTypes from 'prop-types';
-import { FcPhone } from 'react-icons/fc';
+// import { FcPhone } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom"; 
 import { useDispatch } from "react-redux";
 import {setCurrentUser } from "../../redux/contacts/contacts-slice";
+
+import { HiOutlinePhone } from 'react-icons/hi';
 
 const ContactElement = ({ state, contact: { id, name, number } }) => {
 
@@ -17,9 +19,10 @@ const handleClickBtn = ({ contact }) => {
 
 return (
     <li className={style.contact__item}> 
-            <IconContext.Provider value={{ size: "3em" }}>
+            <IconContext.Provider value={{ size: "2em", color: "rgba(224, 62, 13, 0.612)"}}>
                 <div>
-                    <FcPhone className={style.swing} />
+                    <HiOutlinePhone className={style.swing}/>
+                    {/* <FcPhone className={style.swing} /> */}
                 </div>
             </IconContext.Provider>
             <p className={style.contact__text}>{name}</p>
