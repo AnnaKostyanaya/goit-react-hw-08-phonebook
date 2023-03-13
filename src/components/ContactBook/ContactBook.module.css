@@ -15,3 +15,14 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 5px;
+        margin: 5px;
+        width: 470px;
+    }
+    .title {
+        margin-top: 10px;
+    }
+}

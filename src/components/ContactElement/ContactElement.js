@@ -4,8 +4,18 @@ import PropTypes from 'prop-types';
 import { FcPhone } from 'react-icons/fc';
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom"; 
+import { useDispatch } from "react-redux";
+import {setCurrentUser } from "../../redux/contacts/contacts-slice";
 
-const ContactElement = ({ state, contact: { id, name, number } }) => (
+const ContactElement = ({ state, contact: { id, name, number } }) => {
+
+const dispatch = useDispatch();
+
+const handleClickBtn = ({ contact }) => {
+    dispatch(setCurrentUser({id, name, number})); 
+};
+
+return (
     <li className={style.contact__item}> 
             <IconContext.Provider value={{ size: "3em" }}>
                 <div>
@@ -14,11 +24,12 @@ const ContactElement = ({ state, contact: { id, name, number } }) => (
             </IconContext.Provider>
             <p className={style.contact__text}>{name}</p>
             <p className={style.contact__tel}>{number}</p>
-            <Link to={id} state={state} className={style.contact_btn}>
-                Change
+            <Link to={id} state={state} >
+                <button className={style.contact_btn} onClick={handleClickBtn} >Change</button>
             </Link>
     </li>
 );
+}
 
 export default ContactElement;
 

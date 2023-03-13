@@ -37,7 +37,7 @@ catch(error) {
 }
 
 export const logout = async () => {
-    const { data } = await instance.post("/users/logout");
+    const {data} = await instance.post("/users/logout");
     setToken();
     return data;
 }

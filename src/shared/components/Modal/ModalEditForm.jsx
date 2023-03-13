@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { changeContactDetail } from "redux/contacts/contacts-operations";
-import { getAllContacts } from "redux/contacts/contacts-selectors";
+import { getCurrentUser, getAllContacts } from "redux/contacts/contacts-selectors";
 import PropTypes from 'prop-types';
 import style from "./ModalEditForm.module.css";
 
 const ModalEditForm = ({ toggleModal }) => {
 
 const { id } = useParams();
+const currentUser = useSelector(getCurrentUser);
 const allContacts = useSelector(getAllContacts);
-const contactDetail = allContacts.filter(contact => contact.id === id);
 
-const [name, setName] = useState(contactDetail[0].name);
-const [number, setNumber] = useState(contactDetail[0].number);
+const [name, setName] = useState(currentUser.name);
+const [number, setNumber] = useState(currentUser.number);
 
 const dispatch = useDispatch();
 
@@ -38,35 +38,35 @@ const handleSubmit = event => {
     event.preventDefault();
     if (onCheckName(controlName)) {
         alert(`${controlName} is already in contacts`);
+        setName("");
     } else { 
-    dispatch(changeContactDetail({ id, name, number }));
+        dispatch(changeContactDetail({ id, name, number }));
+        toggleModal();
+        setName("");
+        setNumber("");
     }
-    clearForm(controlName);
 };
 
-const clearForm = (name) => {
-    if (onCheckName(name)) {
-        setName("");
-    } else {
-        toggleModal();
-    }
-}
 
 const onCheckName = (name) => {
     if (!allContacts) {
         return;
     }
     const normalizeName = name.toLowerCase();
-    const checkname = allContacts.filter(contact =>
-        contact.name.toLowerCase() === normalizeName
-    );
+    const normalizeCurrentUserName = currentUser.name.toLowerCase();
+    
+    const deleteCurrentName = allContacts
+        .filter(contact => contact.name.toLowerCase() !== normalizeCurrentUserName)
+        .map(contact => contact.name)
+
+    const checkname = deleteCurrentName.filter(name => name.toLowerCase() === normalizeName);
+
     if (checkname.length !== 0) {
         return true;
     } else {
         return false;
     }
-    }
-    
+}
 
 return (
     <>

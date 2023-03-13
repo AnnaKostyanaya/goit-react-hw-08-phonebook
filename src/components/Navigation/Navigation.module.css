@@ -12,3 +12,9 @@
     display: block;
     font-size: 24px;
 }
+
+@media screen and (max-width: 480px) {
+    .listItem {
+        font-size: 14px;
+    }
+}

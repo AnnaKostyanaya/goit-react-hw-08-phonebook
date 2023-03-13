@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import { useLocation } from "react-router-dom"; 
 
 import { useSelector } from "react-redux";
-// import { deleteContacts } from "../../redux/contacts/contacts-slice";
 
 import { getFilteredContacts } from "redux/contacts/contacts-selectors";
 

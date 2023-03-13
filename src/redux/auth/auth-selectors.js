@@ -4,3 +4,10 @@ export const getAuth = ({auth}) => {
     const {isLogin, token} = auth;
     return {isLogin, token};
 }
+export const getError = ({auth}) => {
+    if (auth.error === null) {
+        return
+    } else {
+    return auth.error;
+    }
+};

@@ -55,6 +55,16 @@
     font-size: 14px;
     font-family: 800;
 }
-.container {
+@media screen and (max-width: 480px) {
+    .userAbout {
+        font-size: 14px;
+        width: 320px;
+        margin: 5px 0;
+        padding: 24px;
+    }
     
+    .header {
+        font-size: 14px;
+        font-family: 800;
+    }
 }

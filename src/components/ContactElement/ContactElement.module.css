@@ -40,6 +40,27 @@
     width: 175px;
 }
 
+@media screen and (max-width: 480px) {
+    .contact__text,
+    .contact__tel {
+        font-size: 12px;
+        margin: 0 5px;
+    }
+    
+    .contact__item {
+        margin: 5px 0;
+    }
+    
+    .contact__text {
+        font-weight: 400;
+        width: 125px;
+    }
+    
+    .contact__tel {
+        width: 125px;
+    }
+}
+
 .swing {
     transform: rotate(-90deg);
 }

@@ -6,19 +6,26 @@ import { contactsReducer } from "./contacts/contacts-slice";
 import { filterReducer } from "./filter/filter-slice";
 import { authReducer } from "./auth/auth-slice";
 
-const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['token', "contacts"]
-};
 
-const persistedAuthReducer = persistReducer(persistConfig, authReducer);
-const persistedContactReducer = persistReducer(persistConfig, contactsReducer);
+const authPersistConfig = {
+    key: 'auth',
+    storage,
+    whitelist: ['token']
+};
+const persistAuthReducer = persistReducer(authPersistConfig, authReducer);
+
+const contactsPersistConfig = {
+    key: 'contacts',
+    storage,
+    whitelist: ['currentUser']
+};
+const persistContactsReducer = persistReducer(contactsPersistConfig, contactsReducer);
 
 const rootReducer = combineReducers({
-    contacts: persistedContactReducer,
+    auth: persistAuthReducer,
+    contacts: persistContactsReducer,
     filter: filterReducer,
-    auth: persistedAuthReducer,
 })
 
 export default rootReducer;
+

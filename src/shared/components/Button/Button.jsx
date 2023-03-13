@@ -9,5 +9,5 @@ export default Button;
 
 Button.propTypes = {
     children: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    type: PropTypes.string,
 };

@@ -8,3 +8,12 @@
     margin: 16px;
 }
 
+@media screen and (max-width: 480px) {
+    .header {
+        margin: 8px;
+    }
+    .main {
+        margin: 8px;
+    }
+}
+
