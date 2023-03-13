@@ -18,9 +18,10 @@
 
 @media screen and (max-width: 480px) {
     .container {
-        padding: 5px;
-        margin: 5px;
-        width: 470px;
+        padding: 3px;
+        margin: 3px;
+        width: 450px;
+        outline: none;
     }
     .title {
         margin-top: 10px;
