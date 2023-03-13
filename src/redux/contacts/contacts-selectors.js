@@ -2,7 +2,7 @@ export const getAllContacts = state => state.contacts.contacts;
 export const getIsLoading = state => state.contacts.isLoading;
 export const getError = state => state.contacts.error;
 export const getCurrentUser = state => state.contacts.currentUser;
-export const getCurrentLocation = state => state.contacts.currentUser;
+export const getCurrentLocation = state => state.contacts.currentLocation;
 export const filter = ({filter}) => filter;
 
 export const getFilteredContacts = ({contacts: {contacts, isLoading, error }, filter}) => {

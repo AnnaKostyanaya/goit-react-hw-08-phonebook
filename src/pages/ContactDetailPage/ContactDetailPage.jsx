@@ -1,7 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, 
+    // useLocation 
+} from "react-router-dom";
 import { useState } from "react"; 
 import { useSelector } from "react-redux";
-import { getCurrentUser } from "../../redux/contacts/contacts-selectors";
+import { getCurrentUser, getCurrentLocation } from "../../redux/contacts/contacts-selectors";
 import Modal from "shared/components/Modal/Modal";
 import ModalQuestion from "shared/components/Modal/ModalQuestion";
 import ModalEditForm from "shared/components/Modal/ModalEditForm";
@@ -12,7 +14,10 @@ const ContactDetailPage = () => {
 const [isModalOpen, setIsModalOpen] = useState(false);
 const [menu, setMenu] = useState("");
 
-const location = useLocation();
+// const location = useLocation();
+// console.log(location.state.from);
+const location = useSelector(getCurrentLocation);
+// console.log(currentLocation.state.from);
 
 const currentUser = useSelector(getCurrentUser);
 
