@@ -17,7 +17,7 @@ const persistAuthReducer = persistReducer(authPersistConfig, authReducer);
 const contactsPersistConfig = {
     key: 'contacts',
     storage,
-    whitelist: ['currentUser']
+    whitelist: ['currentUser', 'currentLocation']
 };
 const persistContactsReducer = persistReducer(contactsPersistConfig, contactsReducer);
 

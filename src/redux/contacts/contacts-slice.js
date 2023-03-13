@@ -8,10 +8,14 @@ const contactsSlice = createSlice({
         isLoading: false,
         error: null,
         currentUser: null,
+        currentLocation: null,
     },
     reducers: {
         setCurrentUser: (state, action) => {
         state.currentUser = action.payload;
+        },
+        setCurrentLocation: (state, action) => {
+        state.currentLocation = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -73,6 +77,6 @@ const contactsSlice = createSlice({
     },
 });
 
-export const { setCurrentUser } = contactsSlice.actions;
+export const { setCurrentUser, setCurrentLocation } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 
